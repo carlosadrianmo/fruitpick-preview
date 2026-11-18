@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fruit pick!</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+  <style type="text/tailwindcss">
+      @theme {
+        --color-caradan: #a90000;
+      }
+    </style>
+	<style>
+  /* Fades in and out */
+	.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+  
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  
+}	
+/* Slides on vertical axis */
+.slide-y-enter-active,
+.slide-y-leave-active {
+  transition: all 0.5s ease;
+  transform: translateY(0);
+}
+
+.slide-y-enter-from,
+.slide-y-leave-to {
+  transform: translateY(20px);
+}
+  
+ /* Slides on horizontal axis */
+  aside {
+    transition: all 0.185s ease;
+    
+  }
+  body {
+    background: url('images/background.jpg') center top no-repeat;
+    background-size: 100% auto;
+  }
+  .slide-x {
+    
+   transform: translateX(0);
+  }
+  .action-close {
+    display: block;
+  }
+  .action-open {
+    display: none; 
+  }
+  .translate-x-full .action-open {
+    display: block;
+  }
+   .translate-x-full .action-close { 
+     display: none;
+   }
+  
+.slide-x-enter-active,
+.slide-x-leave-active {
+  transition: all 0.5s ease;
+  transform: translateX(0);
+  position: fixed;
+  top: 0;
+}
+
+.slide-x-enter-from,
+.slide-x-leave-to {
+  transform: translateX(100%);
+  position: fixed;
+  top: 0;
+}
+  
+	</style>
+  
+  
+    <script src="js/vendor/aframe.min.js"></script>
+
+</head>
+
+<body>
+  
+  <main>
+    <section class="container mx-auto py-5 text-center h-[100vh] flex flex-col items-center gap-y-5">
+      
+      <div class="text-center">
+         <img src="images/logo.png" class="rounded-full bg-orange-100 border-0 inline-block w-50 h-50">
+      </div>
+     
+      <h1 class="text-2xl">Game</h1>
+      <p class="text p-4 text-xl text-gray-700">Slogan is good, feel good.</p>
+      <button class="px-4 py-2 inline-block rounded-sm bg-teal-200 text-teal-800 text-2xl text-center text-shadow-sm text-shadow-white shadow-teal-400 shadow-sm border-teal-400 border-2 border-solid">Start</button>
+      <p class="text py-4">
+        <a href="" class="rounded-full border-1 border-solid border-gray-900 px-2 py-1">How to</a> • 
+        <a href="">About</a>
+        
+      </p><footer class="p-5">
+        <p class="text-gray text-sm">© 2026 Devignia</p>
+      </footer>
+     </section>
+    <aside class=" text-left shadow-xl shadow-gray-900/20 border-l-2 border-solid bg-gray-100 border-gray-300 p-4 w-full h-full fixed top-0 left-50 translate-x-full">
+      <header class="flex-row"> 
+        
+        <button class="rounded-full bg-gray-300 text-gray-600 px-4 py-2 border-gray-400 border-solid border-2">⟨ Back</button>
+        <h2 class="text-right font-bold text-4xl inline-block">Subtitle</h2>
+      </header>
+      <div class="py-2 px-1">
+        <h2 class="self-end">Subtitle</h2>
+      <p>Content</p>
+      
+      </div>
+    </aside>
+    
+  </main>
+
+
+    <script src="js/vendor/browser@4"></script>
+
+</body>
+</html>

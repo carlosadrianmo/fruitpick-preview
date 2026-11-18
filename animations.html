@@ -1,0 +1,38 @@
+<style>
+@keyframes shakey {
+  0% {
+    transform: rotate(0deg);
+    /*transition: all 350ms ease-in-out;*/
+  }
+  20% {
+    transform: rotateZ(-20deg);
+  }
+  40% {
+    transform: rotateZ(40deg);
+  }
+  60% {
+    transform: rotateZ(-40deg);
+  }
+  80% {
+    transform: rotateZ(40deg);
+  }
+  100% {
+    transform: rotateZ(-20deg);
+  }
+}
+.animation-shakey {
+  display: inline-block; 
+}
+.animation-shakey {
+  animation: shakey 1350ms;
+  transition: all 1s ease-in-out;
+  transform: rotateZ(30deg);
+  
+}
+
+</style>
+<a href="#" class="animation-shakey">
+  
+  <div>icon</div>
+  <div>Text</div>
+</a>

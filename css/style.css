@@ -1,0 +1,100 @@
+/* using Tailwind V4*/
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-variant: regular;
+  src: url('../fonts/nunito-sans.ttf'), local('nunito') type('truetype');
+}
+
+@font-face {
+  font-family: 'Passion One';
+  font-variant: regular;
+  src: url('../fonts/passion-one.ttf'), local('passion one') type('truetype');
+}
+
+body, .nunito {
+  font-family: 'Nunito Sans' !important;
+}
+.passion, .button, button, h1, h2, h3, h4 {
+  font-family: 'Passion One' !important;
+}
+
+/* regular styles ahead */
+  /* Fades in and out */
+.fade-move,
+	.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(90%);
+}	
+
+.fade-list-move,
+	.fade-list-enter-active,
+.fade-list-leave-active {
+  transition: opacity 1.5s ease;
+  opacity: 1;
+}
+
+.fade-list-enter-from,
+.fade-list-leave-to {
+  opacity: 0;
+  transform: scale(90%);
+}	
+
+  /* Slides on horizontal axis */
+  aside {
+    transition: all 0.185s ease;
+    
+  }
+  body {
+    background: url('../images/background.jpg') center top no-repeat;
+    background-size: cover;
+  }
+  .action-close {
+    display: block;
+  }
+  .action-open {
+    display: none; 
+  }
+  .translate-x-full .action-open {
+    display: block;
+  }
+   .translate-x-full .action-close { 
+     display: none;
+   }
+  /* Slides on vertical axis */
+.slide-y-enter-active,
+.slide-y-leave-active {
+  transition: all .5s ease-in-out;
+  transform: translateY(0);
+  position: fixed;
+  
+}
+
+.slide-y-enter-from,
+.slide-y-leave-to {
+  transform: translateY(80%);
+    position: fixed;
+  
+}
+  
+  /* Slides on horizontal axis */
+.slide-x-enter-active,
+.slide-x-leave-active {
+  transition: all 0.5s ease;
+  transform: translateX(0);
+}
+
+.slide-x-enter-from,
+.slide-x-leave-to {
+  transform: translateX(100%);
+}
+  body > video {
+    visibility: hidden;
+  }

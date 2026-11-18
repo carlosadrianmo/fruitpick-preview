@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fruit pick!</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+  <style type="text/tailwindcss">
+      @theme {
+        --color-caradan: #a90000;
+      }
+    </style
+ / >
+	<style>
+  /* Fades in and out */
+	.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+  
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  
+}	
+/* Slides on vertical axis */
+.slide-y-enter-active,
+.slide-y-leave-active {
+  transition: all 0.5s ease;
+  transform: translateY(0);
+}
+
+.slide-y-enter-from,
+.slide-y-leave-to {
+  transform: translateY(20px);
+}
+  
+ /* Slides on horizontal axis */
+  aside {
+    transition: all 0.185s ease;
+    
+  }
+  body {
+    background: url('images/background.jpg') center top no-repeat;
+    background-size: 100% auto;
+  }
+  .slide-x {
+   transform: translateX(0);
+  }
+  .action-close {
+    display: block;
+  }
+  .action-open {
+    display: none; 
+  }
+  .translate-x-full .action-open {
+    display: block;
+  }
+   .translate-x-full .action-close { 
+     display: none;
+   }
+  
+.slide-x-enter-active,
+.slide-x-leave-active {
+  transition: all 0.5s ease;
+  transform: translateX(0);
+  position: fixed;
+  top: 0;
+}
+
+.slide-x-enter-from,
+.slide-x-leave-to {
+  transform: translateX(100%);
+  position: fixed;
+  top: 0;
+}
+  @keyframes beat {
+    0% {
+      transform: scale(1)
+    }
+        50% {
+      transform: scale(1.24)
+    }
+        100% {
+      transform: scale(1)
+    }
+  }
+  .animate-beat {
+    animation: beat;
+    animation-duration: 600;
+  }
+
+	</style>
+  
+  
+    <script src="js/vendor/aframe.min.js"></script>
+  
+    <script src="js/vendor/aframe-extras.min.js"></script>
+  
+  
+  
+ <script src="js/vendor/aframe-look-at-component.min.js"></script>
+ 
+  <script type='text/javascript' src='/cdn/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='/cdn/aframe-ar.js'></script>
+<script src="js/vendor/aframe-orbit-controls-component.min.js"></script>
+
+  <script>
+  const ls = localStorage;
+  AFRAME.registerComponent('patpat', {
+            init: function() {
+              
+                this.el.addEventListener('click', e => {
+                    console.log('pat pat')
+                });
+            }
+        });
+  const ANIMATION_DURATION  = 580;
+  const ANIMATION_DELAY_START = 180;
+  
+  AFRAME.registerComponent('pickable', {
+    init() {
+      this.el.addEventListener('click', e => {
+        let coords = e.target.getAttribute('gps-new-entity-place'),
+          position = e.target.getAttribute('position'), 
+          pet = doc.querySelector('#pet') 
+        ;
+        
+        pet.setAttribute('gps-new-entity-place', coords)
+        pet.setAttribute('animation_position', {
+          to: { position },
+          duration: ANIMATION_DURATION,
+          delay: ANIMATION_DELAY_START
+        })
+        setTimeout(() => currentPet.setAttribute('gps-new-entity-place', coords), ANIMATION_DURATION)
+      })
+    }
+  })
+  </script>
+</head>
+
+<body>
+  
+  <main>
+    <div class="container mx-auto text-center">
+      <div class="h-[100vh] bg-green-200">
+        
+     
+     <a-scene
+       class="relative"
+			   vr-mode-ui="enabled: false;"
+       cursor="rayOrigin: mouse"
+			   renderer="logarithmicDepthBuffer: true; precision: medium;antialias: true; alpha: true;"
+			   embedded
+			   arjs="trackingMethod:best; videoTexture: true; sourceType: webcam; debugUIEnabled: false;">
+				<a-assets>
+					<a-asset-item id="peach" src="models/peach.gltf"></a-asset-item>
+					<a-asset-item id="apple" src="models/apple.gltf"></a-asset-item>
+					<a-asset-item id="banana" src="models/banana.gltf"></a-asset-item>
+					<a-asset-item id="cat-large" src="models/cat-large.gltf"></a-asset-item>
+					<a-asset-item id="cat-medium" src="models/cat-medium.gltf"></a-asset-item>
+					<a-asset-item id="cat-small" src="models/cat-small.gltf"></a-asset-item>
+					<a-asset-item id="grapes" src="models/grapes.gltf"></a-asset-item>
+					<a-asset-item id="kiwi" src="models/kiwi.gltf"></a-asset-item>
+				</a-assets>
+       
+				 <a-entity camera orbit-controls="
+            target: #pet;
+            enableDamping: true;
+            dampingFactor: 0.125;
+            rotateSpeed:0.25;
+            rotateToSpeed: 0.04;
+            
+            logPosition: true;
+            "></a-entity>
+					  
+  				  <a-entity id="rig" position="0 1.6 0">
+  				    
+  				   
+  					   <a-camera gps-new-camera look-controls rotation-reader></a-camera>
+  				  </a-entity>
+
+				</a-scene>
+      									 </div>
+        <nav class=" fixed bottom-0 left-1/4 bottom-20 w-1/2 border-1 border-solid rounded-full border-black bg-white/90 pl-4">
+        <a href="" class="p-4 inline-block rounded-full bg-red-500/85 text-white w-32 h-32 line-height-30 text-5xl text-center border-5 border-solid border-white absolute -left-20 -top-8 leading-24"><span class="animate-bounce">0</span><span class="block leading-0 text-xs -mt-4">pts</span></a>
+     
+          <a href="" class="p-4 inline-block text-2xl">Me</a>
+        <a href="" class="p-4 inline-block text-2xl">Pets</a>
+          <a href="" class="p-4 inline-block text-2xl">Sett</a>
+         <a href="" class="p-4 inline-block text-2xl">Rank</a>
+      </nav>
+      
+      <footer class="p-5 fixed bottom-0 w-full left-0">
+        <p class="text-gray text-sm text-center">© 2026 Devignia</p>
+      </footer>
+      </div>
+    <aside class=" text-left shadow-xl shadow-gray-900/20 border-2 border-b-0 border-solid bg-gray-100 border-gray-300 rounded-t-lg p-4 w-4/5 h-full fixed left-1/10 top-50 mask-bg-blur-50 translate-y-full">
+      <header class="p-2 flex-row flex-autoitems-center content-evenly">
+         
+          <h2 class="font-bold text-4xl text-right inline-block">Subtitle</h2>
+          <button class="rounded-full bg-gray-300 text-gray-600 px-4 py-2 border-gray-400 border-solid border-2 uppercase">Ok Close</button>
+
+      </header>
+      <div>
+        <h2>Subtitle</h2>
+      <p>Content</p>
+        
+        
+      </div>
+      
+    </aside>
+ </main>
+
+
+    <script src="js/vendor/browser@4"></script>
+
+  <script>
+  
+  const doc = document;
+  
+  function getNearbyCoordsFrom(coords) {
+    coords.latitude += 0.00001 * (9 * Math.random()) //;_.random(-9, 9);
+    coords.longitude += 0.00001 * (9 * Math.random()) //_.random(-9, 9);
+    return coords;
+  }
+  
+  function addFruitsAround(coords, scene) {
+    let fruits = ['peach', 'apple', 'pineapple'];
+    fruits.forEach((item) => {
+      let node = doc.createElement('a-element')
+      ;
+      // node.setAttribute('model-gltf', '#' + item.slug);
+      // node.setAttribute('id', 'fruit-' + crypto.uuid());
+      node.setAttribute('model-gltf', '#' + item);
+      node.setAttribute('gps-new-entity-place', getNearbyCoordsFrom(coords))
+      node.setAttribute('pickable', null)
+      
+      scene.appendChild(node)
+    })
+    return fruits.length;
+  }
+  
+    let camera = doc.querySelector('[gps-new-camera]');
+				let pet = doc.createElement('a-entity');
+				let scene = doc.querySelector('a-scene');
+			let	lib = doc.querySelector('a-assets');
+				lib.addEventListener('loaded', () => {
+  					pet.setAttribute('gltf-model', '#cat-small');
+  					pet.setAttribute('size', { x: 5, y: 5, z: 5});
+				//  pet.setAttribute('position', { x: -1, y: 0, z: -5});
+				  pet.setAttribute('patpat', null);
+				  pet.setAttribute('id', 'pet');
+				  pet.setAttribute('draggable', null);
+  					scene.appendChild(pet);
+				 
+  					// app.assets.loaded = true;
+  					camera.addEventListener('gps-camera-update-position', (ev) => {
+    						let coords = ev.detail.position;
+    						
+    						coords.latitude -= 0.0000085;
+  					  
+    						coords.longitude -= 0.00001;
+    						
+    						pet.setAttribute('gps-new-entity-place', coords);
+    						let added = addFruitsAround(coords, scene)
+  					  console.log(`found ${added} fruits`)
+    						console.log(coords.latitude, coords.longitude)
+				  
+  					});
+				  
+				 });
+
+		pet.setAttribute('look-at', '[gps-new-camera]');
+  /*
+  setInterval(() => {
+    
+    aside.classList.toggle('translate-y-full')
+    
+  }, 3000)*/
+  </script>
+
+</body>
+</html>
